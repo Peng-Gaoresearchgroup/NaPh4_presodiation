@@ -139,8 +139,8 @@ def rank(sampling_predict_csv:str):
 
     
 def main():
-    # job('al')
-    # job('solv')
+    job('al')
+    job('solv')
 
     # Rank
     rank(sampling_predict_csv='./outputs/sampling_predict.csv')
