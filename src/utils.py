@@ -453,6 +453,18 @@ class CSSampling():
         optimal_Rs = top_n_rows['R1'].tolist()
 
         return df,optimal_Rs
+    def ramdom_sampling(self,sample_num):
+        self.collect_R_set()
+        R_li=list(self.R_set)
+        _,optimal_Rs=self.R_analye(target=2.9,optiaml_R_nums=10,y_col="al")
+        smiles_list=[]
+        for _ in range(sample_num):
+            r1=random.choice(R_li)
+            r2=random.choice(R_li)
+            r3=random.choice(R_li)
+            r4=random.choice(R_li)
+            smiles_list.append(self.assemble(r1,r2,r3,r4))
+        return pd.DataFrame({"smiles":smiles_list})
 
 class Ranker():
     def get_scscore(self,smiles,tar=['sascore','scscore','spatial']):
